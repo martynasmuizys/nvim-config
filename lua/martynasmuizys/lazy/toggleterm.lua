@@ -5,7 +5,7 @@ return {
         version = "*",
         opts = function()
             require("toggleterm").setup({
-                size = 20,
+                size = 10,
                 open_mapping = [[<c-\>]],
                 hide_numbers = true,
                 shade_filetypes = {},
@@ -14,7 +14,7 @@ return {
                 start_in_insert = true,
                 insert_mappings = true,
                 persist_size = true,
-                direction = "float",
+                direction = "horizontal",
                 close_on_exit = true,
                 shell = vim.o.shell,
                 float_opts = {
@@ -29,7 +29,7 @@ return {
 
             function _G.set_terminal_keymaps()
                 local opts = { noremap = true }
-                vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+                vim.api.nvim_buf_set_keymap(0, 't', '<leader><esc>', [[<C-\><C-n>]], opts)
                 vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
                 vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
                 vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
@@ -38,24 +38,12 @@ return {
             end
 
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-
+            vim.keymap.set("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")
             local Terminal = require("toggleterm.terminal").Terminal
-            local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+            local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", size = 20 })
 
             function _LAZYGIT_TOGGLE()
                 lazygit:toggle()
-            end
-
-            local node = Terminal:new({ cmd = "node", hidden = true })
-
-            function _NODE_TOGGLE()
-                node:toggle()
-            end
-
-            local python = Terminal:new({ cmd = "python3", hidden = true })
-
-            function _PYTHON_TOGGLE()
-                python:toggle()
             end
         end
     },
