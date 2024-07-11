@@ -5,7 +5,7 @@ return {
         version = "*",
         opts = function()
             require("toggleterm").setup({
-                size = 10,
+                size = 20,
                 open_mapping = [[<c-\>]],
                 hide_numbers = true,
                 shade_filetypes = {},
@@ -14,7 +14,7 @@ return {
                 start_in_insert = true,
                 insert_mappings = true,
                 persist_size = true,
-                direction = "horizontal",
+                direction = "float",
                 close_on_exit = true,
                 shell = vim.o.shell,
                 float_opts = {
