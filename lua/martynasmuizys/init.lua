@@ -2,7 +2,6 @@ require("martynasmuizys.lazy_init")
 require("martynasmuizys.remap")
 require("martynasmuizys.set")
 
-
 -- DO.not
 -- DO NOT INCLUDE THIS
 

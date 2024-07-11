@@ -12,8 +12,12 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
-    config = function()
+    opts = function()
+        return {
+            inlay_hints = { enabled = true }
+        }
+    end,
+    config = function(_, opts)
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -32,10 +36,11 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
+                    if server_name ~= "rust_analyzer" then
+                        require("lspconfig")[server_name].setup {
+                            capabilities = capabilities
+                        }
+                    end
                 end,
 
                 ["lua_ls"] = function()
@@ -68,6 +73,7 @@ return {
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
+
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
@@ -77,7 +83,7 @@ return {
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",
@@ -87,5 +93,6 @@ return {
                 prefix = "",
             },
         })
+        vim.lsp.inlay_hint.enable()
     end
 }
