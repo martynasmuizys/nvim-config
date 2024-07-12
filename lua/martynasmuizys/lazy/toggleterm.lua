@@ -39,11 +39,17 @@ return {
 
             vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
             vim.keymap.set("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")
+            vim.keymap.set("n", "<leader>gd", "<cmd>lua _GH_DASH_TOGGLE()<CR>")
             local Terminal = require("toggleterm.terminal").Terminal
             local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", size = 20 })
+            local gh_dash = Terminal:new({ cmd = "gh dash", hidden = true, direction = "float", size = 20 })
 
             function _LAZYGIT_TOGGLE()
                 lazygit:toggle()
+            end
+
+            function _GH_DASH_TOGGLE()
+                gh_dash:toggle()
             end
         end
     },
