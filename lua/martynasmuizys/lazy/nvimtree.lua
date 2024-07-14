@@ -21,6 +21,5 @@ return {
             },
             vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
         })
-
     end,
 }
