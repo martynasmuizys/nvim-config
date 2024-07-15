@@ -1,2 +1,6 @@
 ## DEEZ NUTZ
-Credits: ThePrimeagen
+Package dependencies:
+    - rgrep
+    - fzf
+    - git
+    - tmux (and tmux-sessionizer)
