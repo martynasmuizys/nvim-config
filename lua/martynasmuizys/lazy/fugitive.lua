@@ -16,9 +16,8 @@ return {
 
                 local bufnr = vim.api.nvim_get_current_buf()
                 local opts = {buffer = bufnr, remap = false}
-                vim.keymap.set("n", "<leader>p", function()
-                    vim.cmd.Git('push')
-                end, opts)
+                -- not working idk why
+                vim.keymap.set("n", "<leader>p", "<cmd>Git push<CR>", opts)
 
                 -- rebase always
                 vim.keymap.set("n", "<leader>P", function()
