@@ -1,5 +1,3 @@
--- idk... | to see when im in insert mode
--- vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
