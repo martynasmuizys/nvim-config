@@ -1,6 +1,6 @@
 ## DEEZ NUTZ
 Package dependencies:
- - rgrep
+ - ripgrep
  - fzf
  - git
  - tmux (and tmux-sessionizer)
