@@ -33,14 +33,13 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "tsserver",
+                "gopls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-                    if server_name ~= "rust_analyzer" then
                         require("lspconfig")[server_name].setup {
                             capabilities = capabilities
                         }
-                    end
                 end,
 
                 ["lua_ls"] = function()

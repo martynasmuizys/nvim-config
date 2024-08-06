@@ -2,6 +2,7 @@ require("martynasmuizys.lazy_init")
 require("martynasmuizys.remap")
 require("martynasmuizys.set")
 
+-- idk primeagen uses htmx lsp
 -- DO.not
 -- DO NOT INCLUDE THIS
 
@@ -14,7 +15,7 @@ require("martynasmuizys.set")
 -- DO.not
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', {})
+local SomeGroup = augroup('Some', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -41,13 +42,13 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = SomeGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
+    group = SomeGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
