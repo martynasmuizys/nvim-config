@@ -1,6 +1,6 @@
-require("martynasmuizys.lazy_init")
 require("martynasmuizys.remap")
 require("martynasmuizys.set")
+require("martynasmuizys.lazy_init")
 
 -- idk primeagen uses htmx lsp
 -- DO.not
